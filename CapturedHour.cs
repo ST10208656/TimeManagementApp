@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace TimeManagementApp
 {
-    public class CapturedHours
+    public class CapturedHour
     {
         public int HoursStudied { get; set; }
         public DateTime DateStudied { get; set; }
 
-        public CapturedHours(int hoursStudied, DateTime dateStudied)
+        public CapturedHour(int hoursStudied, DateTime dateStudied)
         {
             HoursStudied= hoursStudied;
             DateStudied= dateStudied;   

@@ -8,8 +8,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Width="800" Height="450">
         <Grid.RowDefinitions>
-            <RowDefinition Height="48.602"/>
-            <RowDefinition Height="29.282"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -17,23 +17,45 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Module Details" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" Grid.Row="0" Margin="0,20,0,10" Foreground="White" Grid.RowSpan="2"/>
+        <TextBlock Text="Module Details" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,20,0,50" Foreground="White" Grid.Row="0" Grid.RowSpan="2"/>
 
-        <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Left" Margin="10,0,0,74" Grid.RowSpan="2">
-            <TextBlock Text="{Binding ModuleCode, StringFormat='Module Code: {0}'}" FontWeight="Bold" FontSize="24" Foreground="White"/>
-            <TextBlock Text="{Binding ModuleName, StringFormat='Module Name: {0}'}" Margin="0,5,0,0" Foreground="White"/>
-            <TextBlock Text="{Binding NumberOfCredits, StringFormat='Number Of Credits: {0}'}" Margin="0,5,0,0" Foreground="White"/>
-            <TextBlock Text="{Binding StudyHoursPerWeek, StringFormat='Study Hours Per Week: {0}'}" Margin="0,5,0,0" Foreground="White"/>
+        <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Left" Margin="10,10,0,40" Grid.RowSpan="2">
+            <TextBlock Text="{Binding ModuleCode, StringFormat='Module Code: {0}'}" FontWeight="Bold" Foreground="White"/>
+            <TextBlock Text="{Binding ModuleName, StringFormat='Module Name: {0}'}" Margin="0,5,0,0" Foreground="White" FontWeight="Bold"/>
+            <TextBlock Text="{Binding NumberOfCredits, StringFormat='Number Of Credits: {0}'}" Margin="0,5,0,0" Foreground="White" FontWeight="Bold"/>
         </StackPanel>
 
-        <TextBlock Text="Date Studied:" Grid.Row="4" HorizontalAlignment="Left" Visibility="Visible" FontWeight="Bold" Foreground="White" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="14"/>
+        <Label Content="Date Studied:" Grid.Row="3" HorizontalAlignment="Left" FontWeight="Bold" Foreground="White" Margin="10,10,0,0" VerticalAlignment="Center"/>
+        <DatePicker x:Name="DateStudiedDatePicker" Grid.Row="3" HorizontalAlignment="Left" Margin="140,10,0,0" VerticalAlignment="Center" Width="150"/>
 
-        <TextBlock Text="Hours Studied:" Grid.Row="4" HorizontalAlignment="Center" Visibility="Visible" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="HoursStudiedTextBox" Grid.Row="4" Width="120" Height="30" BorderBrush="Black" Visibility="Visible" HorizontalAlignment="Left" Margin="455,0,0,0" Grid.RowSpan="3" />
-        <DatePicker x:Name="datePicker" HorizontalAlignment="Left" Margin="125,0,0,0" Grid.Row="4" VerticalAlignment="Center"/>
+        <Label Content="Hours Studied:" Grid.Row="4" HorizontalAlignment="Left" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" Margin="10,10,0,0"/>
+        <TextBox x:Name="HoursStudiedTextBox" Grid.Row="4" Width="120" Height="30" BorderBrush="White" HorizontalAlignment="Left" Margin="140,10,0,0" VerticalAlignment="Center" Background="{x:Null}"/>
 
-        <Label x:Name="label" Content="Please capture study hours below:" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" FontSize="18"/>
+        <Label x:Name="label" Content="Please capture study hours below:" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" FontSize="22" Margin="0,0,0,0"/>
 
+        <Button Content="Capture Hours Studied" Grid.Row="5" HorizontalAlignment="Center" Margin="0,20,0,10" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="White" Height="35" Click="CaptureHoursButton_Click"/>
 
+        <ListView x:Name="CapturedHoursListView" Grid.Row="7" ItemsSource="{Binding CapturedHours}" Foreground="White" Background="{x:Null}" BorderBrush="White" Height="auto" Margin="10,30,10,10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Date Captured" Width="120">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding DateStudied, StringFormat='yyyy-MM-dd'}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Captured Hours" Width="120">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding HoursStudied}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <TextBlock Text="{Binding SelfStudyHoursPerWeek, UpdateSourceTrigger=PropertyChanged, StringFormat='Remaining Study Hours Per Week: {0}'}" Foreground="White" Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" x:Name="StudyHoursTextBlock" Margin="10,0,0,50"/>
     </Grid>
 </UserControl>

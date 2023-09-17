@@ -3,24 +3,27 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="450" Width="800">
     <Viewbox Stretch="Fill">
-    <Grid>
-        <!-- Common Elements Container -->
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+        <Grid Height="450" Width="800">
+            <!-- Common Elements Container -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-            <!-- Common Content (e.g., Labels, Buttons) -->
-            <Label Content="TimeManagementApp" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="25" FontWeight="Bold" />
+                <!-- Common Content (e.g., Labels, Buttons) -->
+
+                <Label Content="TimeManagementApp" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="25" FontWeight="Bold" />
+            </Grid>
+            <!-- Content Container (Replace with Frame or other container) -->
+            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" BorderBrush="#FFBB0000" >
+                <Frame.Background>
+                    <ImageBrush ImageSource="/purple-wallpaper-with-colorful-background-purple-background.jpg" TileMode="FlipX" Stretch="UniformToFill"/>
+                </Frame.Background>
+            </Frame>
+            <Button x:Name="ReturnButton" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Click="ReturnButton_Click" Background="{x:Null}" Foreground="White">
+                <Path Data="M0,0 L20,10 L20,-10 Z" Stroke="White" StrokeThickness="2" Width="17" Height="20" Stretch="Fill"/>
+            </Button>
         </Grid>
-
-        <!-- Content Container (Replace with Frame or other container) -->
-        <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden" BorderBrush="#FFBB0000" >
-            <Frame.Background>
-                <ImageBrush ImageSource="/purple-wallpaper-with-colorful-background-purple-background.jpg" TileMode="FlipX" Stretch="UniformToFill"/>
-            </Frame.Background>
-        </Frame>
-    </Grid>
     </Viewbox>
 </Window>

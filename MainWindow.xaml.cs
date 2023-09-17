@@ -29,6 +29,12 @@ namespace TimeManagementApp
             semesters = new ObservableCollection<Semester>();
             MainFrame1.Navigate(new WelcomePage());
         }
-
+        private void ReturnButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MainFrame.CanGoBack)
+            {
+                MainFrame.GoBack();
+            }
+        }
     }
 }

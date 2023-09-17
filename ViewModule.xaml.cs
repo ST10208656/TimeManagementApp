@@ -51,24 +51,18 @@ namespace TimeManagementApp
             // Check if an item is selected
             if (ModuleNameListBox.SelectedItem is Module selectedModule)
             {
-                // Get the selected module code
-
-
-
                 var mainFrame = Application.Current.MainWindow.FindName("MainFrame") as Frame;
                 if (mainFrame != null)
                 {
-                    ModuleDetailsControl moduleDetailsControl = new ModuleDetailsControl();
+                    // Create an instance of ModuleDetailsControl with selectedModule as a parameter
+                    ModuleDetailsControl moduleDetailsControl = new ModuleDetailsControl(selectedModule, Semesters);
 
                     // Set the DataContext of the ModuleDetailsControl to the selectedModule
                     moduleDetailsControl.DataContext = selectedModule;
 
                     // Navigate to the ModuleDetailsControl
                     mainFrame.Navigate(moduleDetailsControl);
-
-          }
-
-
+                }
             }
         }
 
