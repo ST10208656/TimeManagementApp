@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TimeManagementApp;
+using Example;
+
 
 namespace TimeManagementApp
 {
@@ -48,7 +50,7 @@ namespace TimeManagementApp
             currentSemester.StartDate = dateStartDate.SelectedDate.Value;
             string numberOfWeeksText = numberOfWeeksTextBox.Text;
             int numberOfWeeks = int.Parse(numberOfWeeksText);
-            int selfStudyHoursPerWeek = SelfStudyHoursPerWeek(classHoursPerWeek, numberOfCredits, numberOfWeeks);
+            int selfStudyHoursPerWeek = ModuleManager.SelfStudyHoursPerWeek(classHoursPerWeek, numberOfCredits, numberOfWeeks);
             currentSemester.NumberOfWeeks = numberOfWeeks;
             Module Module = new Module(moduleCodeText, moduleNameText, numberOfCredits, classHoursPerWeek, selfStudyHoursPerWeek);
             currentSemester.Modules.Add(Module);
@@ -76,14 +78,7 @@ namespace TimeManagementApp
 
 
         }
-        public static int SelfStudyHoursPerWeek(int classHoursPerWeek, int numberOfCredits, int numberOfWeeks)
-        {
-
-            int selfStudyHoursPerWeek = numberOfCredits * 10 / numberOfWeeks - classHoursPerWeek;
-
-            return selfStudyHoursPerWeek;
-
-        }
+       
     }
 }
 

@@ -15,11 +15,11 @@
         </Grid.RowDefinitions>
         <Label Content="Please select a module" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" FontSize="22" FontWeight="Bold" Foreground="White" Margin="0,20,0,0"/>
 
-        <ListBox x:Name="ModuleNameListBox" Grid.Row="2" Margin="4,50,6,0" SelectionChanged="ModuleNameListBox_SelectionChanged" Background="{x:Null}" BorderBrush="White" FontFamily="Cascadia Mono SemiBold" Foreground="White">
+        <ListBox x:Name="ModuleNameListBox" Grid.Row="2" Margin="4,5,6,0" SelectionChanged="ModuleNameListBox_SelectionChanged" Background="{x:Null}" BorderBrush="White" FontFamily="Cascadia Mono SemiBold" Foreground="White">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <!-- Recipe Name -->
+                       
                         <TextBlock Text="{Binding ModuleName, StringFormat='Module Name: {0}'}" FontWeight="Bold" FontSize="16" Foreground="White"/>
 
                         <TextBlock Text="{Binding SelfStudyHoursPerWeek, StringFormat='Self-Study Hours Per Week: {0}'}" Foreground="White"/>

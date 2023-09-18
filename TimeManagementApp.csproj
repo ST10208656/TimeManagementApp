@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
@@ -10,6 +10,16 @@
   <ItemGroup>
     <None Remove="purple-wallpaper-with-colorful-background-purple-background.jpg" />
     <None Remove="rm251-mind-08-f.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Example\Example.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="TimeManagementLibrary1">
+      <HintPath>..\..\TimeManagementLibrary1\bin\Debug\net6.0-windows\TimeManagementLibrary1.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
