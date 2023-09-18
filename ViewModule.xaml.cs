@@ -21,7 +21,7 @@ namespace TimeManagementApp
     /// Interaction logic for ViewModule.xaml
     /// </summary>
     public partial class ViewModule : UserControl
-    {
+    }
         private ObservableCollection<Semester> Semesters { get; set; }
         public ViewModule(ObservableCollection<Semester> semesters)
         {
