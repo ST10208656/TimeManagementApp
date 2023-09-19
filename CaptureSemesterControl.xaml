@@ -33,7 +33,7 @@
                     </LinearGradientBrush>
                 </DatePicker.BorderBrush>
             </DatePicker>
-            <Label Content="Number of weeks for the semester:" Grid.Column="2" HorizontalAlignment="Left" Foreground="White" FontWeight="Bold"/>
+            <Label Content="Number of weeks for the semester:" Grid.Column="2" HorizontalAlignment="Left" Margin="20,0,0,0" Foreground="White" FontWeight="Bold"/>
             <TextBox Name="NumberOfWeeksTextBox" Grid.Column="3" Width="70" HorizontalAlignment="Left" Margin="10,0,0,0" Height="25" Background="{x:Null}" BorderBrush="White" Foreground="White" TextChanged="NumberOfWeeksTextBox_TextChanged"/>
 
         </Grid>
