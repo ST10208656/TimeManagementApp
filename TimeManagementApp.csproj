@@ -17,12 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="TimeManagementLibrary1">
-      <HintPath>..\..\TimeManagementLibrary1\bin\Debug\net6.0-windows\TimeManagementLibrary1.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="purple-wallpaper-with-colorful-background-purple-background.jpg" />
     <Resource Include="rm251-mind-08-f.jpg" />
   </ItemGroup>

@@ -23,11 +23,11 @@ namespace TimeManagementApp
     public partial class MainWindow : Window
     {
         public Frame MainFrame1 => MainFrame;
-        private ObservableCollection<Semester> semesters;
+      
         public MainWindow()
         {
             InitializeComponent();
-            semesters = new ObservableCollection<Semester>();
+          
             MainFrame1.Navigate(new WelcomePage());
         }
         private void ReturnButton_Click(object sender, RoutedEventArgs e)

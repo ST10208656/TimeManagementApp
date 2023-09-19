@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="TimeManagementApp.CaptureSemesterControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TimeManagementApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Height="450" Width="800">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Content="Please enter the following details for the semester" HorizontalAlignment="Center" Margin="0,50,0,0" Grid.Row="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Foreground="White"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="350"/>
+                <ColumnDefinition Width="350"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Start date for the semester:" Grid.Column="0" Margin="10,0,0,0" Foreground="White" FontWeight="Bold"/>
+            <Label Content="Number of weeks for the semester" Grid.Column="1" HorizontalAlignment="Left" Foreground="White" FontWeight="Bold"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="350"/>
+                <ColumnDefinition Width="125.907"/>
+                <ColumnDefinition Width="224.093"/>
+            </Grid.ColumnDefinitions>
+            <DatePicker Name="StartDatePicker" Grid.Column="0" Width="100" HorizontalAlignment="Left" Margin="10,0,0,291" Foreground="White">
+                <DatePicker.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                        <GradientStop Color="#FFA3AEB9"/>
+                        <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                        <GradientStop Color="#FF718597" Offset="0.375"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </DatePicker.BorderBrush>
+            </DatePicker>
+            <TextBox Name="NumberOfWeeksTextBox" Grid.Column="1" Width="70" HorizontalAlignment="Left" Margin="0,0,0,283" Height="32" Background="{x:Null}" BorderBrush="White" Foreground="White"/>
+        </Grid>
+
+        <Button Content="Add Semester" Click="AddSemesterButton_Click" VerticalAlignment="Top" Margin="330,200,330,0" Height="35" Grid.Row="2" FontWeight="Bold" BorderBrush="White" Foreground="White" Background="{x:Null}"/>
+        <Button Content="--->Continue" Click="ContinueButton_Click" VerticalAlignment="Top" Margin="330,280,330,0" Height="35" Grid.Row="3" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}"/>
+
+    </Grid>
+</UserControl>

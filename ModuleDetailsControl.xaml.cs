@@ -55,8 +55,8 @@ namespace TimeManagementApp
                 if (semesterOfModule != null)
                 {
                     // Add the captured hours to the ObservableCollection in the semester
-                    semesterOfModule.CapturedHours.Add(capturedHours);
-                    CapturedHoursListView.DataContext = semesterOfModule;
+                    module.CapturedHours.Add(capturedHours);
+                    CapturedHoursListView.DataContext = module;
 
                 }
                 if (module.SelfStudyHoursPerWeek <= 0)

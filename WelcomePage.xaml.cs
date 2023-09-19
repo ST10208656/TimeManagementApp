@@ -37,7 +37,7 @@ namespace TimeManagementApp
             var mainFrame = Application.Current.MainWindow.FindName("MainFrame") as Frame;
             if (mainFrame != null)
             {
-                mainFrame.Navigate(new ViewModule(semesters));
+                mainFrame.Navigate(new CaptureSemesterControl());
             }
         }
     }

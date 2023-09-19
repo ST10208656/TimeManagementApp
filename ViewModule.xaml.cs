@@ -24,11 +24,13 @@ namespace TimeManagementApp
     public partial class ViewModule : UserControl
     { 
         private ObservableCollection<Semester> Semesters { get; set; }
-        public ViewModule(ObservableCollection<Semester> semesters)
+        private Semester currentSemester;
+        public ViewModule(Semester currentSemester1, ObservableCollection<Semester> semesters)
         {
             InitializeComponent();
             Semesters = semesters;
-            //DataContext = semesters;
+            currentSemester = currentSemester1;
+           
             var allModules = Semesters.SelectMany(semester => semester.Modules);
             var date = Semesters.Select(semester => semester.NumberOfWeeks);
             // Bind the ListBox to the list of modules
@@ -73,7 +75,7 @@ namespace TimeManagementApp
             var mainFrame = Application.Current.MainWindow.FindName("MainFrame") as Frame;
             if (mainFrame != null)
             {
-                mainFrame.Navigate(new CaptureModuleControl(Semesters));
+                mainFrame.Navigate(new CaptureModuleControl(currentSemester, Semesters));
             }
         }
     }

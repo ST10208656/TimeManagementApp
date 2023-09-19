@@ -25,45 +25,80 @@ namespace TimeManagementApp
     public partial class CaptureModuleControl : UserControl 
     {
         private ObservableCollection<Semester> Semesters { get; set; }
-        public CaptureModuleControl(ObservableCollection<Semester> semesters)
+        private Semester currentSemester;
+        public CaptureModuleControl(Semester currentSemester1,ObservableCollection<Semester> semesters)
         {
             InitializeComponent();
 
             Semesters = new ObservableCollection<Semester>();
             Semesters = semesters;
+            currentSemester = currentSemester1;
 
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
 
-            Semester currentSemester = new Semester();
+           
+            try
+            {
+                // Get the module details from the input fields
 
-            // Get the module details from the input fields
+                string moduleCodeText = moduleCodeTextBox.Text;
+                string moduleNameText = moduleNameTextBox.Text;
+                string numberOfCreditsText = numberOfCreditsTextBox.Text;
+                int numberOfCredits = int.Parse(numberOfCreditsText);
+                if (!int.TryParse(numberOfCreditsText, out numberOfCredits))
+                {
+                    numberOfCredits = 0; // Change this to an appropriate default value.
+                }
+                string classHoursPerWeekText = classHoursPerWeekTextBox.Text;
+                int classHoursPerWeek = int.Parse(classHoursPerWeekText);
+                if (!int.TryParse(classHoursPerWeekText, out classHoursPerWeek))
+                {
+                    // Handle invalid input for classHoursPerWeek (not a valid integer)
+                    // You can display an error message or log the error.
+                    // For now, I'll set a default value, but you should handle this according to your application's requirements.
+                    classHoursPerWeek = 0; // Change this to an appropriate default value.
+                }
+                DateTime? startDate = dateStartDate.SelectedDate;
 
-            string moduleCodeText = moduleCodeTextBox.Text;
-            string moduleNameText = moduleNameTextBox.Text;
-            string numberOfCreditsText = numberOfCreditsTextBox.Text;
-            int numberOfCredits = int.Parse(numberOfCreditsText);
-            string classHoursPerWeekText = classHoursPerWeekTextBox.Text;
-            int classHoursPerWeek = int.Parse(classHoursPerWeekText);
-            currentSemester.StartDate = dateStartDate.SelectedDate.Value;
-            string numberOfWeeksText = numberOfWeeksTextBox.Text;
-            int numberOfWeeks = int.Parse(numberOfWeeksText);
-            int selfStudyHoursPerWeek = ModuleManager.SelfStudyHoursPerWeek(classHoursPerWeek, numberOfCredits, numberOfWeeks);
-            currentSemester.NumberOfWeeks = numberOfWeeks;
-            Module Module = new Module(moduleCodeText, moduleNameText, numberOfCredits, classHoursPerWeek, selfStudyHoursPerWeek);
-            currentSemester.Modules.Add(Module);
+                if (!startDate.HasValue)
+                {
+                    // Handle null or invalid date input
+                    // You can display an error message or log the error.
+                    // For now, I'll set a default value, but you should handle this according to your application's requirements.
+                    startDate = DateTime.Now; // Change this to an appropriate default value.
+                }
+               
+                string numberOfWeeksText = numberOfWeeksTextBox.Text;
+                int numberOfWeeks = int.Parse(numberOfWeeksText);
+                if (!int.TryParse(numberOfWeeksText, out numberOfWeeks))
+                {
+                    // Handle invalid input for numberOfWeeks (not a valid integer)
+                    // You can display an error message or log the error.
+                    // For now, I'll set a default value, but you should handle this according to your application's requirements.
+                    numberOfWeeks = 0; // Change this to an appropriate default value.
+                }
+                int selfStudyHoursPerWeek = ModuleManager.SelfStudyHoursPerWeek(classHoursPerWeek, numberOfCredits, numberOfWeeks);
+                currentSemester.StartDate = dateStartDate.SelectedDate.Value;
+                currentSemester.NumberOfWeeks = numberOfWeeks;
+                Module Module = new Module(moduleCodeText, moduleNameText, numberOfCredits, classHoursPerWeek, selfStudyHoursPerWeek);
+                currentSemester.Modules.Add(Module);
 
-            Semesters.Add(currentSemester);
-            ModulelistBox.ItemsSource = currentSemester.Modules;
+                Semesters.Add(currentSemester);
+                ModulelistBox.ItemsSource = currentSemester.Modules;
 
-            moduleCodeTextBox.Text = string.Empty;
-            moduleNameTextBox.Text = string.Empty;
-            numberOfCreditsTextBox.Text = string.Empty;
-            classHoursPerWeekTextBox.Text = string.Empty;
-            numberOfWeeksTextBox.Text = string.Empty;
-
+                moduleCodeTextBox.Text = string.Empty;
+                moduleNameTextBox.Text = string.Empty;
+                numberOfCreditsTextBox.Text = string.Empty;
+                classHoursPerWeekTextBox.Text = string.Empty;
+                numberOfWeeksTextBox.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+MessageBox.Show(ex.Message);
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -73,7 +108,7 @@ namespace TimeManagementApp
             var mainFrame = Application.Current.MainWindow.FindName("MainFrame") as Frame;
             if (mainFrame != null)
             {
-                mainFrame.Navigate(new ViewModule(Semesters));
+                mainFrame.Navigate(new ViewModule(currentSemester, Semesters));
             }
 
 
