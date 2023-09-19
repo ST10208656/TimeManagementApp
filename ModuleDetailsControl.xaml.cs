@@ -46,12 +46,12 @@ namespace TimeManagementApp
                 DateTime date = DateStudiedDatePicker.SelectedDate.Value;
                 capturedHours = new CapturedHour(hoursStudied, date);
 
-                // Subtract hours studied from self-study hours
-                // module.SelfStudyHoursPerWeek -= hoursStudied;
+               
+         
                 module.SelfStudyHoursPerWeek = ModuleManager.RemainingHours(hoursStudied, module.SelfStudyHoursPerWeek);
                 Semester semesterOfModule = Semesters.FirstOrDefault(semester => semester.Modules.Contains(module));
                 // Update the UI or perform any other necessary actions
-                // (e.g., display the updated self-study hours)
+               
                 if (semesterOfModule != null)
                 {
                     // Add the captured hours to the ObservableCollection in the semester

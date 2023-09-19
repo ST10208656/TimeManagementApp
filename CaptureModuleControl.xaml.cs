@@ -22,58 +22,48 @@ namespace TimeManagementApp
     /// <summary>
     /// Interaction logic for CaptureModuleControl.xaml
     /// </summary>
-    public partial class CaptureModuleControl : UserControl 
+    public partial class CaptureModuleControl : UserControl //This is the user control to capture modules for the semester
     {
-        private ObservableCollection<Semester> Semesters { get; set; }
+        private ObservableCollection<Semester> Semesters;
         private Semester currentSemester;
-        public CaptureModuleControl(Semester currentSemester1,ObservableCollection<Semester> semesters)
+        public CaptureModuleControl(Semester currentSemester1, ObservableCollection<Semester> semesters)
         {
             InitializeComponent();
-
-            Semesters = new ObservableCollection<Semester>();
-            Semesters = semesters;
-            currentSemester = currentSemester1;
+            Semesters = semesters; //Sets the reference for the semester list in the previous user control
+            currentSemester = currentSemester1; //Sets the reference for the current semester instance in the previous user control
 
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
 
-           
+
             try
             {
-                // Get the module details from the input fields
-
+                // The lines of code below gets the module details from the input fields
                 string moduleCodeText = moduleCodeTextBox.Text;
                 string moduleNameText = moduleNameTextBox.Text;
                 string numberOfCreditsText = numberOfCreditsTextBox.Text;
                 int numberOfCredits = int.Parse(numberOfCreditsText);
-                if (!int.TryParse(numberOfCreditsText, out numberOfCredits))
-                {
-                    numberOfCredits = 0; // Change this to an appropriate default value.
-                }
                 string classHoursPerWeekText = classHoursPerWeekTextBox.Text;
                 int classHoursPerWeek = int.Parse(classHoursPerWeekText);
-                if (!int.TryParse(classHoursPerWeekText, out classHoursPerWeek))
-                {
-                    // Handle invalid input for classHoursPerWeek (not a valid integer)
-                    // You can display an error message or log the error.
-                    // For now, I'll set a default value, but you should handle this according to your application's requirements.
-                    classHoursPerWeek = 0; // Change this to an appropriate default value.
-                }
-                int selfStudyHoursPerWeek = ModuleManager.SelfStudyHoursPerWeek(classHoursPerWeek, numberOfCredits, currentSemester.NumberOfWeeks);
 
-                
-                Module Module = new Module(moduleCodeText, moduleNameText, numberOfCredits, classHoursPerWeek, selfStudyHoursPerWeek);
+                int selfStudyHoursPerWeek = ModuleManager.SelfStudyHoursPerWeek(classHoursPerWeek, numberOfCredits, currentSemester.NumberOfWeeks); //This uses a method that calculates the self study hours per week then assign it to a variable to be used in the modules list
+
+
+                Module Module = new Module(moduleCodeText, moduleNameText, numberOfCredits, classHoursPerWeek, selfStudyHoursPerWeek); //Creates an instance of the module and adds it to the module list
                 currentSemester.Modules.Add(Module);
 
-                if (selfStudyHoursPerWeek <= 0)
+                if (selfStudyHoursPerWeek <= 0) //This assures that the user enter values that will give appropriate calculations and rather not a calculation error
                 {
                     MessageBox.Show("Negative value found, please re-check what you entered");
-                    currentSemester.Modules.Remove(Module);
+                    currentSemester.Modules.Remove(Module); //Removes the data to ensure no duplication of data when re-entering values
                 }
-                ModulelistBox.ItemsSource = currentSemester.Modules;
+                ModulelistBox.ItemsSource = currentSemester.Modules;//Binds the current modules entered to a list box
 
+                MessageBox.Show("Module captured, you may enter another module or you may continue"); //Message box to instruct that the user can enter another module
+
+                //The code below clears the text boxes for users to input values again
                 moduleCodeTextBox.Text = string.Empty;
                 moduleNameTextBox.Text = string.Empty;
                 numberOfCreditsTextBox.Text = string.Empty;
@@ -81,23 +71,21 @@ namespace TimeManagementApp
             }
             catch (Exception ex)
             {
-MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);//Once the error has been catched it displays the apporpriate message
             }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            /*Window2 obj = new Window2(Semesters);
-            obj.Show();*/
-            var mainFrame = Application.Current.MainWindow.FindName("MainFrame") as Frame;
+            var mainFrame = Application.Current.MainWindow.FindName("MainFrame") as Frame; //This line of code fetches the main window that contains the main frame
             if (mainFrame != null)
             {
-                mainFrame.Navigate(new ViewModule(currentSemester, Semesters));
+                mainFrame.Navigate(new ViewModule(currentSemester, Semesters)); //Goes to the next user control by changing the main frame's content
             }
 
 
         }
-       
+
     }
 }
 

@@ -19,7 +19,7 @@ namespace TimeManagementApp
     /// <summary>
     /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class Login : UserControl
+    public partial class Login : UserControl //This is the login page
     {
         public Login()
         {
@@ -33,10 +33,10 @@ namespace TimeManagementApp
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            var mainFrame = Application.Current.MainWindow.FindName("MainFrame") as Frame;
-            if (mainFrame != null)
+            var mainFrame = Application.Current.MainWindow.FindName("MainFrame") as Frame; //This line of code fetches the main window that contains the main frame
+            if (mainFrame != null) //Checks if there is content in the main frame
             {
-                mainFrame.Navigate(new CaptureSemesterControl());
+                mainFrame.Navigate(new CaptureSemesterControl()); //Once it finds the main frame it replaces the content inside the main frame with the user control called Login
             }
         }
     }

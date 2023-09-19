@@ -20,75 +20,66 @@ namespace TimeManagementApp
     /// <summary>
     /// Interaction logic for CaptureSemesterControl.xaml
     /// </summary>
-    public partial class CaptureSemesterControl : UserControl
+    public partial class CaptureSemesterControl : UserControl //This is the user control to capture a semester
     {
-        private Semester currentSemester;
-        private ObservableCollection<Semester> semesters;
+        private Semester currentSemester; //This instance represents the semester currently being entered
+        private ObservableCollection<Semester> semesters; //This instance represents the semester but in an observable collection so that it can work with the UI when needing to add and remove items
         public CaptureSemesterControl()
         {
             InitializeComponent();
-            currentSemester = new Semester();
-            semesters = new ObservableCollection<Semester>();
+            currentSemester = new Semester(); //creates new instance of the current semester 
+            semesters = new ObservableCollection<Semester>(); // creates new instance for the semester list for the currentSemester object to be added to
         }
 
         private void AddSemesterButton_Click(object sender, RoutedEventArgs e)
         {
-            DateTime? startDate = StartDatePicker.SelectedDate;
-
-            if (!startDate.HasValue)
+            try
             {
-                // Handle null or invalid date input
-                // You can display an error message or log the error.
-                // For now, I'll set a default value, but you should handle this according to your application's requirements.
-                startDate = DateTime.Now; // Change this to an appropriate default value.
+                string numberOfWeeksText = NumberOfWeeksTextBox.Text; //The number of weeks gets fetched from the text box that represents the number of weeks
+                int numberOfWeeks = int.Parse(numberOfWeeksText);
+
+                currentSemester.StartDate = StartDatePicker.SelectedDate.Value;//The start date value gets assigned to the property 'start date' of the current semester
+                currentSemester.NumberOfWeeks = numberOfWeeks;//The number of weeks value gets assigned to the property 'start date' of the current semester
+
+                semesters.Add(currentSemester); //Once the details of the current semester are added the current semester gets added to a semester list
+
+                if (semesters.Count == 1)//This is to ensure the semester is only entered once then the necessary content gets hidden or displayed
+                {
+                    maxSemesterLabel.Visibility = Visibility.Visible;
+                    addSemesterButton.Visibility = Visibility.Collapsed;
+                    captureSemesterGrid.Visibility = Visibility.Collapsed;
+                    instructionLabel.Visibility = Visibility.Collapsed;
+                }
             }
-            string numberOfWeeksText = NumberOfWeeksTextBox.Text;
-            int numberOfWeeks = int.Parse(numberOfWeeksText);
-            if (!int.TryParse(numberOfWeeksText, out numberOfWeeks))
+            catch (Exception ex)//Error handling to catch incorrect input 
             {
-                // Handle invalid input for numberOfWeeks (not a valid integer)
-                // You can display an error message or log the error.
-                // For now, I'll set a default value, but you should handle this according to your application's requirements.
-                numberOfWeeks = 0; // Change this to an appropriate default value.
+                MessageBox.Show(ex.Message);
             }
-            currentSemester.StartDate = StartDatePicker.SelectedDate.Value;
-            currentSemester.NumberOfWeeks = numberOfWeeks;
-
-            semesters.Add(currentSemester);
-
-            if (semesters.Count == 1)
-            {
-                maxSemesterLabel.Visibility = Visibility.Visible;
-                addSemesterButton.Visibility = Visibility.Collapsed;
-                captureSemesterGrid.Visibility = Visibility.Collapsed;
-                instructionLabel.Visibility = Visibility.Collapsed;
-            }
-
         }
 
-        private void ContinueButton_Click(object sender, RoutedEventArgs e)
+        private void ContinueButton_Click(object sender, RoutedEventArgs e) //The continue button is used to redirect to a different user control
         {
-            var mainFrame = Application.Current.MainWindow.FindName("MainFrame") as Frame;
+            var mainFrame = Application.Current.MainWindow.FindName("MainFrame") as Frame; //This line of code fetches the main window that contains the main frame
             if (mainFrame != null)
             {
-                if (semesters.Count == 0)
+                if (semesters.Count == 0) //Checks that the semester is entered or it returns to the current page so that they can re-enter the semester
                 {
                     MessageBox.Show("Semester not captured, please enter semester details.");
 
                     if (mainFrame != null)
                     {
-                        CaptureSemesterControl captureSemesterControl = new CaptureSemesterControl();
+                        CaptureSemesterControl captureSemesterControl = new CaptureSemesterControl();//Goes back to the same user control
 
                         mainFrame.Navigate(captureSemesterControl);
                     }
                 }
                 else
                 {
-                    mainFrame.Navigate(new ViewModule(currentSemester, semesters));
+                    mainFrame.Navigate(new ViewModule(currentSemester, semesters));//If the semester has been entered it moves on to the next user control
                 }
 
             }
-           
+
         }
 
         private void NumberOfWeeksTextBox_TextChanged(object sender, TextChangedEventArgs e)
