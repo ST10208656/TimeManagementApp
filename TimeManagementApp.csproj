@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Example\Example.csproj" />
+    <ProjectReference Include="..\TimeManagementClassLibrary\TimeManagementClassLibrary.csproj" />
   </ItemGroup>
 
   <ItemGroup>

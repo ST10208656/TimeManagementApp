@@ -13,15 +13,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Example;
+using TimeManagementClassLibrary;
 
 namespace TimeManagementApp
 {
     /// <summary>
     /// Interaction logic for ViewModule.xaml
     /// </summary>
+
     public partial class ViewModule : UserControl
-    }
+    { 
         private ObservableCollection<Semester> Semesters { get; set; }
         public ViewModule(ObservableCollection<Semester> semesters)
         {
