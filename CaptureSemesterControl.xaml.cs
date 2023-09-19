@@ -46,6 +46,7 @@ namespace TimeManagementApp
                 if (semesters.Count == 1)//This is to ensure the semester is only entered once then the necessary content gets hidden or displayed
                 {
                     maxSemesterLabel.Visibility = Visibility.Visible;
+                    continueButton.Visibility= Visibility.Visible;
                     addSemesterButton.Visibility = Visibility.Collapsed;
                     captureSemesterGrid.Visibility = Visibility.Collapsed;
                     instructionLabel.Visibility = Visibility.Collapsed;

@@ -19,7 +19,7 @@ namespace TimeManagementApp
     /// <summary>
     /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class Login : UserControl //This is the login page
+    public partial class Login : UserControl //This is user control that represents the login page
     {
         public Login()
         {

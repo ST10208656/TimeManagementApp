@@ -31,8 +31,7 @@ namespace TimeManagementApp
             Semesters = semesters; //Sets the reference for the semester list in the previous user control
             currentSemester = currentSemester1; //Sets the reference for the current semester instance in the previous user control
 
-            var allModules = Semesters.SelectMany(semester => semester.Modules);
-            var date = Semesters.Select(semester => semester.NumberOfWeeks);
+            var allModules = Semesters.SelectMany(semester => semester.Modules); //LINQ query used to fetch all the modules from the semester list
 
             ModuleNameListBox.ItemsSource = allModules; // Bind the ListBox to the list of modules
 
