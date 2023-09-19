@@ -11,23 +11,19 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Label Content="Please enter the following details for the semester" HorizontalAlignment="Center" Margin="0,50,0,0" Grid.Row="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Foreground="White"/>
-        <Grid Grid.Row="1">
+        <Label Content="Please enter the following details for the semester:" x:Name="instructionLabel" HorizontalAlignment="Center" Margin="0,50,0,17" Grid.Row="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Foreground="White"/>
+        <Grid Grid.Row="1" x:Name="captureSemesterGrid">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="350"/>
-                <ColumnDefinition Width="350"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
             <Label Content="Start date for the semester:" Grid.Column="0" Margin="10,0,0,0" Foreground="White" FontWeight="Bold"/>
-            <Label Content="Number of weeks for the semester" Grid.Column="1" HorizontalAlignment="Left" Foreground="White" FontWeight="Bold"/>
-        </Grid>
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="350"/>
-                <ColumnDefinition Width="125.907"/>
-                <ColumnDefinition Width="224.093"/>
-            </Grid.ColumnDefinitions>
-            <DatePicker Name="StartDatePicker" Grid.Column="0" Width="100" HorizontalAlignment="Left" Margin="10,0,0,291" Foreground="White">
+            <DatePicker Name="StartDatePicker" Grid.Column="1" Width="100" HorizontalAlignment="Center" Margin="10,0,0,0" Foreground="Black">
                 <DatePicker.BorderBrush>
                     <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
                         <GradientStop Color="#FFA3AEB9"/>
@@ -37,11 +33,13 @@
                     </LinearGradientBrush>
                 </DatePicker.BorderBrush>
             </DatePicker>
-            <TextBox Name="NumberOfWeeksTextBox" Grid.Column="1" Width="70" HorizontalAlignment="Left" Margin="0,0,0,283" Height="32" Background="{x:Null}" BorderBrush="White" Foreground="White"/>
+            <Label Content="Number of weeks for the semester:" Grid.Column="2" HorizontalAlignment="Left" Foreground="White" FontWeight="Bold"/>
+            <TextBox Name="NumberOfWeeksTextBox" Grid.Column="3" Width="70" HorizontalAlignment="Left" Margin="10,0,0,0" Height="25" Background="{x:Null}" BorderBrush="White" Foreground="White" TextChanged="NumberOfWeeksTextBox_TextChanged"/>
+
         </Grid>
+        <Button Content="--->Continue" Click="ContinueButton_Click" VerticalAlignment="Bottom" Margin="0,120,0,0" Height="35" Grid.Row="4" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}" FontSize="16"/>
+        <Button Content="Add Semester" x:Name="addSemesterButton"  Click="AddSemesterButton_Click" VerticalAlignment="Top" Margin="0,35,0,35" Height="35" Grid.Row="2" FontWeight="Bold" BorderBrush="White" Foreground="White" Background="{x:Null}" Width="100"/>
 
-        <Button Content="Add Semester" Click="AddSemesterButton_Click" VerticalAlignment="Top" Margin="330,200,330,0" Height="35" Grid.Row="2" FontWeight="Bold" BorderBrush="White" Foreground="White" Background="{x:Null}"/>
-        <Button Content="--->Continue" Click="ContinueButton_Click" VerticalAlignment="Top" Margin="330,280,330,0" Height="35" Grid.Row="3" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}"/>
-
+        <Label x:Name="maxSemesterLabel" Visibility="Collapsed" Content="Thank you. Maximum number of semesters captured please press continue" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="22" FontWeight="Bold" Margin="0,230,0,0"/>
     </Grid>
 </UserControl>

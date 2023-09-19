@@ -61,39 +61,23 @@ namespace TimeManagementApp
                     // For now, I'll set a default value, but you should handle this according to your application's requirements.
                     classHoursPerWeek = 0; // Change this to an appropriate default value.
                 }
-                DateTime? startDate = dateStartDate.SelectedDate;
+                int selfStudyHoursPerWeek = ModuleManager.SelfStudyHoursPerWeek(classHoursPerWeek, numberOfCredits, currentSemester.NumberOfWeeks);
 
-                if (!startDate.HasValue)
-                {
-                    // Handle null or invalid date input
-                    // You can display an error message or log the error.
-                    // For now, I'll set a default value, but you should handle this according to your application's requirements.
-                    startDate = DateTime.Now; // Change this to an appropriate default value.
-                }
-               
-                string numberOfWeeksText = numberOfWeeksTextBox.Text;
-                int numberOfWeeks = int.Parse(numberOfWeeksText);
-                if (!int.TryParse(numberOfWeeksText, out numberOfWeeks))
-                {
-                    // Handle invalid input for numberOfWeeks (not a valid integer)
-                    // You can display an error message or log the error.
-                    // For now, I'll set a default value, but you should handle this according to your application's requirements.
-                    numberOfWeeks = 0; // Change this to an appropriate default value.
-                }
-                int selfStudyHoursPerWeek = ModuleManager.SelfStudyHoursPerWeek(classHoursPerWeek, numberOfCredits, numberOfWeeks);
-                currentSemester.StartDate = dateStartDate.SelectedDate.Value;
-                currentSemester.NumberOfWeeks = numberOfWeeks;
+                
                 Module Module = new Module(moduleCodeText, moduleNameText, numberOfCredits, classHoursPerWeek, selfStudyHoursPerWeek);
                 currentSemester.Modules.Add(Module);
 
-                Semesters.Add(currentSemester);
+                if (selfStudyHoursPerWeek <= 0)
+                {
+                    MessageBox.Show("Negative value found, please re-check what you entered");
+                    currentSemester.Modules.Remove(Module);
+                }
                 ModulelistBox.ItemsSource = currentSemester.Modules;
 
                 moduleCodeTextBox.Text = string.Empty;
                 moduleNameTextBox.Text = string.Empty;
                 numberOfCreditsTextBox.Text = string.Empty;
                 classHoursPerWeekTextBox.Text = string.Empty;
-                numberOfWeeksTextBox.Text = string.Empty;
             }
             catch (Exception ex)
             {

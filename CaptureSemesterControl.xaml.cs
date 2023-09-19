@@ -53,15 +53,47 @@ namespace TimeManagementApp
             }
             currentSemester.StartDate = StartDatePicker.SelectedDate.Value;
             currentSemester.NumberOfWeeks = numberOfWeeks;
+
+            semesters.Add(currentSemester);
+
+            if (semesters.Count == 1)
+            {
+                maxSemesterLabel.Visibility = Visibility.Visible;
+                addSemesterButton.Visibility = Visibility.Collapsed;
+                captureSemesterGrid.Visibility = Visibility.Collapsed;
+                instructionLabel.Visibility = Visibility.Collapsed;
+            }
+
         }
-       
-private void ContinueButton_Click(object sender, RoutedEventArgs e)
+
+        private void ContinueButton_Click(object sender, RoutedEventArgs e)
         {
             var mainFrame = Application.Current.MainWindow.FindName("MainFrame") as Frame;
             if (mainFrame != null)
             {
-                mainFrame.Navigate(new CaptureModuleControl(currentSemester, semesters));
+                if (semesters.Count == 0)
+                {
+                    MessageBox.Show("Semester not captured, please enter semester details.");
+
+                    if (mainFrame != null)
+                    {
+                        CaptureSemesterControl captureSemesterControl = new CaptureSemesterControl();
+
+                        mainFrame.Navigate(captureSemesterControl);
+                    }
+                }
+                else
+                {
+                    mainFrame.Navigate(new ViewModule(currentSemester, semesters));
+                }
+
             }
+           
+        }
+
+        private void NumberOfWeeksTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
-}
 }

@@ -37,5 +37,13 @@ namespace TimeManagementApp
                 MainFrame.GoBack();
             }
         }
+
+        private void ForwardButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MainFrame.CanGoForward)
+            {
+                MainFrame.GoForward();
+            }
+        }
     }
 }

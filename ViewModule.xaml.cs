@@ -49,6 +49,7 @@ namespace TimeManagementApp
                 ModuleNameListBox.Visibility = Visibility.Visible;
 
             }
+            
         }
         private void ModuleNameListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

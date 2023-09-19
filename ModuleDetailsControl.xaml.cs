@@ -77,6 +77,14 @@ namespace TimeManagementApp
             }
 
         }
-     
+
+        private void returnButton_Click(object sender, RoutedEventArgs e)
+        {
+            var mainFrame = Application.Current.MainWindow.FindName("MainFrame") as Frame;
+            if (mainFrame != null)
+            {
+                mainFrame.Navigate(new WelcomePage());
+            }
+        }
     }
 }
