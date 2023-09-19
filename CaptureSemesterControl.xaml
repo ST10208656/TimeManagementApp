@@ -14,7 +14,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Label Content="Please enter the following details for the semester:" x:Name="instructionLabel" HorizontalAlignment="Center" Margin="0,50,0,17" Grid.Row="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Foreground="White"/>
+        <Label Content="Please enter the following details for the semester:" x:Name="instructionLabel" HorizontalAlignment="Center" Margin="0,0,0,30" Grid.Row="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Foreground="White"/>
         <Grid Grid.Row="1" x:Name="captureSemesterGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
@@ -37,7 +37,7 @@
             <TextBox Name="NumberOfWeeksTextBox" Grid.Column="3" Width="70" HorizontalAlignment="Left" Margin="10,0,0,0" Height="25" Background="{x:Null}" BorderBrush="White" Foreground="White" TextChanged="NumberOfWeeksTextBox_TextChanged"/>
 
         </Grid>
-        <Button Content="--->Continue" Click="ContinueButton_Click" VerticalAlignment="Bottom" Margin="0,120,0,0" Height="35" Grid.Row="4" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}" FontSize="16"/>
+        <Button Content="--->Continue" Click="ContinueButton_Click" VerticalAlignment="Bottom" Margin="0,150,0,0" Height="35" Grid.Row="4" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}" FontSize="16" Width="110"/>
         <Button Content="Add Semester" x:Name="addSemesterButton"  Click="AddSemesterButton_Click" VerticalAlignment="Top" Margin="0,35,0,35" Height="35" Grid.Row="2" FontWeight="Bold" BorderBrush="White" Foreground="White" Background="{x:Null}" Width="100"/>
 
         <Label x:Name="maxSemesterLabel" Visibility="Collapsed" Content="Thank you. Maximum number of semesters captured please press continue" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="22" FontWeight="Bold" Margin="0,230,0,0"/>

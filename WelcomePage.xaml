@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Width="800" Height="450">
         <Label Content="Welcome To Time Management App" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Margin="0,167,0,0" Foreground="White"/>
-        <Button Content="---> Continue" HorizontalAlignment="Left" Margin="358,380,0,0" VerticalAlignment="Top" Click="Button_Click" FontSize="16" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <Button Content="---> Continue" HorizontalAlignment="Left" Margin="358,420,0,0" VerticalAlignment="Top" Click="Button_Click" FontSize="16" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}"/>
 
     </Grid>
 </UserControl>

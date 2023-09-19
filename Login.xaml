@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="TimeManagementApp.Login"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TimeManagementApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+
+        </Grid.RowDefinitions>
+        
+        <Label x:Name="label" Content="Please Login:" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Top" Foreground="White" Margin="0,0,0,170" FontWeight="Bold" FontSize="22"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="Auto"/>
+                
+            </Grid.ColumnDefinitions>
+            <Label x:Name="label1" Content="Username:" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="300,0,0,0" FontWeight="Bold" Foreground="White"/>
+            <TextBox x:Name="textBox" HorizontalAlignment="Center" Margin="50,0,0,0" Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged" BorderBrush="White" Background="{x:Null}" Foreground="White"/>
+
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="Auto"/>
+
+            </Grid.ColumnDefinitions>
+            <Label x:Name="label2" Content="Password:" HorizontalAlignment="Center" Grid.Column="0" VerticalAlignment="Center" Margin="300,0,0,0" FontWeight="Bold" Foreground="White"/>
+            <TextBox x:Name="textBox1" HorizontalAlignment="Center" Grid.Column="1" Margin="54,0,0,0"  TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Background="{x:Null}" Foreground="White" BorderBrush="White"/>
+
+        </Grid>
+        <Button x:Name="button" Content="Login" HorizontalAlignment="Center" Grid.Row="3"  VerticalAlignment="Center" Margin="0,50,0,0" Foreground="White" FontSize="16" FontWeight="Bold" Background="{x:Null}" BorderBrush="White" Click="button_Click"/>
+
+
+
+
+    </Grid>
+</UserControl>

@@ -17,7 +17,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Module Details" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,20,0,50" Foreground="White" Grid.Row="0" Grid.RowSpan="2"/>
+        <TextBlock Text="Module Details:" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,50" Foreground="White" Grid.Row="0" Grid.RowSpan="2"/>
 
         <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Left" Margin="10,10,0,40" Grid.RowSpan="2">
             <TextBlock Text="{Binding ModuleCode, StringFormat='Module Code: {0}'}" FontWeight="Bold" Foreground="White"/>
@@ -31,7 +31,7 @@
         <Label Content="Hours Studied:" Grid.Row="4" HorizontalAlignment="Left" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" Margin="10,10,0,0"/>
         <TextBox x:Name="HoursStudiedTextBox" Grid.Row="4" Width="120" Height="30" BorderBrush="White" HorizontalAlignment="Left" Margin="140,10,0,0" VerticalAlignment="Center" Background="{x:Null}" Foreground="White"/>
 
-        <Label x:Name="label" Content="Please capture study hours below:" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" FontSize="22" Margin="0,0,0,0"/>
+        <Label x:Name="label" Content="Please capture study hours below:" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" FontSize="20" Margin="0,0,0,0"/>
 
         <Button Content="Capture Hours Studied" Grid.Row="5" HorizontalAlignment="Center" Margin="0,20,0,10" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" Background="{x:Null}" BorderBrush="White" Height="35" Click="CaptureHoursButton_Click"/>
 

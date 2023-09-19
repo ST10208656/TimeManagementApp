@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto"/>
 
         </Grid.RowDefinitions>
-        <Label Content="Please select a module" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" FontSize="22" FontWeight="Bold" Foreground="White" Margin="0,20,0,0"/>
+        <Label Content="Please select a module:" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" FontSize="22" FontWeight="Bold" Foreground="White" Margin="0,0,0,0"/>
 
         <ListBox x:Name="ModuleNameListBox" Grid.Row="2" Margin="4,5,6,0" SelectionChanged="ModuleNameListBox_SelectionChanged" Background="{x:Null}" BorderBrush="White" FontFamily="Cascadia Mono SemiBold" Foreground="White">
             <ListBox.ItemTemplate>

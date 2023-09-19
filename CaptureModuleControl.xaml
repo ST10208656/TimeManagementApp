@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Viewbox Stretch="Fill">
-        <Grid Width="800">
+        <Grid Width="800" Height="450">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="70"/>
@@ -29,7 +29,7 @@
 
 
 
-            <Label Content="Please enter the following details for the modules:" HorizontalAlignment="Center" Margin="0,3,0,0" VerticalAlignment="Top" Height="40" Grid.Row="1" Width="auto" FontSize="20" BorderBrush="Black" FontWeight="Bold" Foreground="White" FontFamily="Segoe UI"/>
+            <Label Content="Please enter the following details for the modules:" HorizontalAlignment="Center" Margin="0,3,0,0" VerticalAlignment="Top" Height="40" Grid.Row="0" Width="auto" FontSize="22" BorderBrush="Black" FontWeight="Bold" Foreground="White" FontFamily="Segoe UI"/>
 
 
             <Grid Grid.Row ="3" Margin="0,0,0,-40">
@@ -59,20 +59,8 @@
                 <TextBox x:Name="classHoursPerWeekTextBox" Grid.Column="3" HorizontalAlignment="Center" Margin="20" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" BorderBrush="White" Background="{x:Null}" Foreground="White"/>
             </Grid>
             <Grid Grid.Row="5">
-                <Grid.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black" Offset="0"/>
-                        <GradientStop Color="#FF47CCCC" Offset="1"/>
-                    </LinearGradientBrush>
-                </Grid.Background>
-                <ListBox x:Name="ModulelistBox" Grid.Row="4" BorderBrush="{x:Null}" Background="{x:Null}" MaxHeight="100" FontWeight="Bold">
-                    <ListBox.Foreground>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="Black"/>
-                            <GradientStop Color="White" Offset="1"/>
-                        </LinearGradientBrush>
-                    </ListBox.Foreground>
-                </ListBox>
+                
+                <ListBox x:Name="ModulelistBox" Grid.Row="4" BorderBrush="White" Background="{x:Null}" MaxHeight="100" FontWeight="Bold" Foreground="White"/>
             </Grid>
             <Button x:Name="button" Content="Add Module" HorizontalAlignment="Center" Margin="20,30,20,100" Grid.Row="6" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="White" BorderThickness="1,1,2,1" FontWeight="Bold" Click="button_Click" Foreground="White" Width="100" Height="35"/>
 

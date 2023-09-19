@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,26 +17,26 @@ using TimeManagementClassLibrary;
 namespace TimeManagementApp
 {
     /// <summary>
-    /// Interaction logic for WelcomePage.xaml
+    /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class WelcomePage : UserControl
+    public partial class Login : UserControl
     {
-        private ObservableCollection<Semester> semesters;
-        public WelcomePage()
+        public Login()
         {
             InitializeComponent();
-            semesters = new ObservableCollection<Semester>();
         }
 
-    
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
 
+        }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void button_Click(object sender, RoutedEventArgs e)
         {
             var mainFrame = Application.Current.MainWindow.FindName("MainFrame") as Frame;
             if (mainFrame != null)
             {
-                mainFrame.Navigate(new Login());
+                mainFrame.Navigate(new CaptureSemesterControl());
             }
         }
     }
